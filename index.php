@@ -196,7 +196,7 @@ Array.prototype.forEach.call(zerosize, function(element){
     if(4 !== ev.target.readyState || 200 !== ev.target.status) return;
     element.innerText = "(" + human_readable_bytes_size(ev.target.getResponseHeader("Content-Length"), 2) + ")";
   };
-  xhr.open("HEAD", element.parentNode.href, true);
+  xhr.open("HEAD", element.parentNode.parentNode.href, true);
   xhr.send();
 });
 </script>
