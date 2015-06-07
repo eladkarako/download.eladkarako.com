@@ -61,12 +61,12 @@ input{
   font-weight: bold;
 }
 
-::-webkit-input-placeholder{ -webkit-text-fill-color:rgba(0,0,0,.15); color:rgba(0,0,0,.15) }
-::-moz-placeholder{          color:rgba(0,0,0,.15) }
-:-moz-placeholder{           color:rgba(0,0,0,.15) }
-:-ms-input-placeholder {     color:rgba(0,0,0,.15) }
-::input-placeholder {        color:rgba(0,0,0,.15) }
-:input-placeholder {         color:rgba(0,0,0,.15) }
+::-webkit-input-placeholder{ font-style: italic; color:rgba(0,0,0,.15); -webkit-text-fill-color:rgba(0,0,0,.15); }
+::-moz-placeholder{          font-style: italic; color:rgba(0,0,0,.15) }
+:-moz-placeholder{           font-style: italic; color:rgba(0,0,0,.15) }
+:-ms-input-placeholder {     font-style: italic; color:rgba(0,0,0,.15) }
+::input-placeholder {        font-style: italic; color:rgba(0,0,0,.15) }
+:input-placeholder {         font-style: italic; color:rgba(0,0,0,.15) }
 
 
 ol{
