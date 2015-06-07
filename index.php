@@ -60,6 +60,15 @@ input{
   font-size: 20pt;
   font-weight: bold;
 }
+
+::-webkit-input-placeholder{ -webkit-text-fill-color:rgba(0,0,0,.15); color:rgba(0,0,0,.15) }
+::-moz-placeholder{          color:rgba(0,0,0,.15) }
+:-moz-placeholder{           color:rgba(0,0,0,.15) }
+:-ms-input-placeholder {     color:rgba(0,0,0,.15) }
+::input-placeholder {        color:rgba(0,0,0,.15) }
+:input-placeholder {         color:rgba(0,0,0,.15) }
+
+
 ol{
   padding-right: 10px;
 }
@@ -79,6 +88,7 @@ li:hover, li:focus, li:active, li:visited{
 }
 a, a:hover,a:focus{text-decoration: none}
 
+
 [name]{
   font-size: 18pt;
   padding: 1px 10px 20px 0;
@@ -93,7 +103,7 @@ a, a:hover,a:focus{text-decoration: none}
 }
 
 [data-ext]:before{
-  content:  url("assets/_unknown.gif");
+  content:  url("file_ext/_unknown.gif");
   width:    16px;
   height:   16px;
   padding:  10px;
@@ -110,10 +120,10 @@ a, a:hover,a:focus{text-decoration: none}
 ?>
 
 
-a{ display: table; }
-[data-ext]:before{ display: table-cell; }
-[name]{ display: table-cell; }
-[size]{ display: table-cell; }
+[data-ext]:before{ margin: 10px; display:  inline-block }
+div{               padding:10px; display:  inline-block }
+a{                   width:100%; display:  inline-block }
+
 
 /* ---- */
 .hide{
@@ -123,14 +133,14 @@ a{ display: table; }
 </style>
 </head>
 <body>
-<center><input type="text" /></center>
+<center><input type="text" placeholder="^.*$"/></center>
 <ol>
 </ol>
 <script>
   var files = <?php echo $files; ?>;
 
   files = files.map(function(file){
-    return '<li> <a data-ext="##EXT##" download="##FILE##" href="http://download.eladkarako.com/resources/##FILE##"><div name>##FILE##</div><div size>(##FILE_SIZE##)</div></a> </li>'
+    return '<li> <a data-ext="##EXT##" download="##FILE##" href="http://download.eladkarako.com/resources/##FILE##"><div><span name>##FILE##</span><span size>(##FILE_SIZE##)</span></div></a> </li>'
       .replace(/##FILE##/g,       file['file'])
       .replace(/##EXT##/g,        file['file'].split('.').slice(-1) )
       .replace(/##FILE_SIZE##/g,  file['size'])
@@ -144,12 +154,15 @@ var input = document.querySelector('input');
 var lis = document.querySelectorAll('li');
 
 input.onkeyup = function(){
-  var value = input.value.toLowerCase();
-
+  var regex = new RegExp(input.value, "i");
+  var is_match;
+  
   Array.prototype.forEach.call(lis, function(li){
-    li.classList.remove('hide');
-
-    (-1 === li.querySelector('[name]').textContent.toLowerCase().indexOf(value)) && (li.classList.add("hide"));
+    is_match = regex.test(li.querySelector('[name]').textContent);
+    if(true === is_match) 
+      li.classList.remove('hide');
+    else
+      li.classList.add('hide');
   });
 }
 </script>
