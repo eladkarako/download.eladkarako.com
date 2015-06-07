@@ -73,6 +73,7 @@ ol{
   padding-right: 10px;
 }
 li{
+  overflow: hidden;
   margin: 15px;
   width: calc(100% - 30px);
 
@@ -120,9 +121,9 @@ a, a:hover,a:focus{text-decoration: none}
 ?>
 
 
-[data-ext]:before{ margin: 10px; display:  inline-block }
-div{               padding:10px; display:  inline-block }
-a{                   width:100%; display:  inline-block }
+[data-ext]:before{          margin: 10px; display:  inline-block }
+div{ word-break: break-all; padding:10px; display:  inline-block }
+a{                            width:100%; display:  inline-block }
 
 
 /* ---- */
