@@ -143,7 +143,7 @@ a{                            width:100%; display:  inline-block }
   files = files.map(function(file){
     return '<li> <a data-ext="##EXT##" download="##FILE##" href="http://download.eladkarako.com/resources/##FILE##"><div><span name>##FILE##</span><span size>(##FILE_SIZE##)</span></div></a> </li>'
       .replace(/##FILE##/g,       file['file'])
-      .replace(/##EXT##/g,        file['file'].split('.').slice(-1) )
+      .replace(/##EXT##/g,        file['file'].split('.').slice(-1).toLowerCase() )
       .replace(/##FILE_SIZE##/g,  file['size'])
       ;
   }).join("\n");
